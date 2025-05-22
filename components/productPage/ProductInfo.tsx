@@ -22,7 +22,7 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ product, onAddToCart }) => {
   const subtotal = (discountedPrice * quantity).toFixed(2);
 
   return (
-    <div className="flex flex-col flex-1 ml-8">
+    <div className="flex flex-col flex-1 ml-0 md:ml-8">
       <h1 className="text-3xl font-bold mb-2">{product.title}</h1>
       <p className="text-gray-700 mb-4">{product.description}</p>
 
