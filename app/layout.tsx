@@ -6,7 +6,7 @@ import FooterTop from "@/components/FooterTop";
 export const metadata: Metadata = {
   title: {
     template: "The Cat Lab | Kenzo x Michael",
-    default: "online store",
+    default: "The Cat Lab | Kenzo x Michael",
   },
   description: "Shopcat online store, by Kenzo x Michael",
 };
