@@ -5,10 +5,10 @@ import FooterTop from "@/components/FooterTop";
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | Shopcart online store",
-    default: "Shopcart online store",
+    template: "The Cat Lab | Kenzo x Michael",
+    default: "online store",
   },
-  description: "Shopcat online store, your one stop shop for all your needs",
+  description: "Shopcat online store, by Kenzo x Michael",
 };
 
 export default function RootLayout({
