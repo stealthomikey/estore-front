@@ -48,7 +48,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
   return (
     <>
-    <div className="bg-white rounded-xl shadow-md flex flex-col justify-between items-center transition-shadow duration-300 hover:shadow-2xl h-[500px] w-full max-w-sm p-4">
+    <div className="bg-white rounded-xl shadow-md flex flex-col justify-between items-center transition-shadow duration-300 hover:shadow-2xl h-[525px] w-full max-w-sm p-4">
       <a
         href={`/product/${product.id}`}
         className="w-full h-1/2 rounded-t-xl overflow-hidden group focus:outline-none focus:ring-2 focus:ring-shop_light_green flex-shrink-0 relative"
