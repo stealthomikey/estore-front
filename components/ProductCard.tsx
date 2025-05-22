@@ -1,7 +1,10 @@
 'use client';
 
-import React from 'react';
+import React, {useState} from 'react';
 import { ShoppingCart, Star } from 'lucide-react';
+import Image from 'next/image';
+import { blog } from '@/images'; // construction meme image
+
 
 interface Image {
   id: string;
@@ -37,11 +40,14 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const fullStars = Math.floor(rating);
   const fractionalPart = rating - fullStars;
 
+  const [showPopup, setShowPopup] = useState(false);
+
   const imageUrl = primaryImage
     ? `https://res.cloudinary.com/dsezrayrn/image/upload/v1747945584/${primaryImage.image_url}`
     : 'https://res.cloudinary.com/dsezrayrn/image/upload/v1747945584/Image_gmbu3r.png';
 
   return (
+    <>
     <div className="bg-white rounded-xl shadow-md flex flex-col justify-between items-center transition-shadow duration-300 hover:shadow-2xl h-[500px] w-full max-w-sm p-4">
       <a
         href={`/product/${product.id}`}
@@ -105,12 +111,36 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </div>
       </div>
       <div className="w-full flex justify-center pb-10">
-        <button className="flex items-center gap-2 bg-shop_light_green text-white px-4 py-3 rounded-lg font-semibold hover:bg-green-600 transition w-full max-w-[180px]">
+        <button onClick={() => setShowPopup(true)} className="flex items-center gap-2 bg-shop_light_green text-white px-4 py-3 rounded-lg font-semibold hover:bg-green-600 transition w-full max-w-[180px]">
           <ShoppingCart size={18} />
           Add to Cart
         </button>
       </div>
     </div>
+          {showPopup && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
+          <div className="bg-white rounded-lg shadow-lg max-w-sm w-full relative p-5 text-center">
+            <button
+              onClick={() => setShowPopup(false)}
+              className="absolute top-3 right-3 text-gray-500 hover:text-black text-xl"
+            >
+              ×
+            </button>
+            <h2 className="text-lg font-semibold mb-2">Basket Under Construction</h2>
+            <p className="text-sm text-gray-600 mb-4">Coming soon!</p>
+            <div className="w-full h-48 relative rounded overflow-hidden">
+              <Image
+                src={blog}
+                alt="Under Construction"
+                fill
+                className="object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+
   );
 };
 
