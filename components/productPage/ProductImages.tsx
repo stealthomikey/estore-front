@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface Image {
   id: string;
@@ -12,16 +12,32 @@ interface ProductImagesProps {
 }
 
 const ProductImages: React.FC<ProductImagesProps> = ({ images = [], title }) => {
-  // Find primary image or fallback to first image or undefined
-  const primaryImage = images.find(img => img.is_primary) || images[0];
+  const [primaryImage, setPrimaryImage] = useState<Image | undefined>(undefined);
+  const [secondaryImages, setSecondaryImages] = useState<Image[]>([]);
 
-  // Construct image URL or fallback to placeholder
+  useEffect(() => {
+    if (images.length > 0) {
+      const initialPrimary = images.find(img => img.is_primary) || images[0];
+      const rest = images.filter(img => img.id !== initialPrimary.id);
+      setPrimaryImage(initialPrimary);
+      setSecondaryImages(rest);
+    }
+  }, [images]);
+
+  const handleImageSwap = (selectedImage: Image) => {
+    if (!primaryImage) return;
+
+    setPrimaryImage(selectedImage);
+    setSecondaryImages(prevImages =>
+      prevImages
+        .filter(img => img.id !== selectedImage.id)
+        .concat(primaryImage)
+    );
+  };
+
   const primaryImageUrl = primaryImage
     ? `https://res.cloudinary.com/dsezrayrn/image/upload/v1747945584/${primaryImage.image_url}`
     : 'https://res.cloudinary.com/dsezrayrn/image/upload/v1747945584/Image_gmbu3r.png';
-
-  // Secondary images exclude primary
-  const secondaryImages = images.filter(img => !img.is_primary);
 
   return (
     <div className="flex flex-col w-full max-w-md">
@@ -29,7 +45,7 @@ const ProductImages: React.FC<ProductImagesProps> = ({ images = [], title }) => 
       <div className="mb-4">
         <img
           src={primaryImageUrl}
-          alt={title + (primaryImage?.is_primary ? ' (Primary)' : '')}
+          alt={title + ' (Primary)'}
           className="w-full h-auto rounded-lg border-2 border-green-600 object-cover"
         />
       </div>
@@ -43,6 +59,7 @@ const ProductImages: React.FC<ProductImagesProps> = ({ images = [], title }) => 
               src={`https://res.cloudinary.com/dsezrayrn/image/upload/v1747945584/${img.image_url}`}
               alt={`${title} image`}
               className="w-20 h-20 rounded border border-gray-300 object-cover cursor-pointer hover:border-green-600"
+              onClick={() => handleImageSwap(img)}
             />
           ))}
         </div>
