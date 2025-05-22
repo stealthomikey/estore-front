@@ -1,7 +1,6 @@
 // src/components/ShopMenu.tsx
 'use client';
 
-import React, { useState } from 'react';
 import ShopFilterButtons from './ShopFilterButtons';
 
 interface ShopMenuProps {

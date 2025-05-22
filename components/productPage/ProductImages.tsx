@@ -17,8 +17,8 @@ const ProductImages: React.FC<ProductImagesProps> = ({ images = [], title }) => 
 
   // Construct image URL or fallback to placeholder
   const primaryImageUrl = primaryImage
-    ? `http://localhost:5000/images/${primaryImage.image_url}`
-    : 'http://localhost:5000/images/placeholder.png';
+    ? `https://res.cloudinary.com/dsezrayrn/image/upload/v1747945584/${primaryImage.image_url}`
+    : 'https://res.cloudinary.com/dsezrayrn/image/upload/v1747945584/Image_gmbu3r.png';
 
   // Secondary images exclude primary
   const secondaryImages = images.filter(img => !img.is_primary);
@@ -40,7 +40,7 @@ const ProductImages: React.FC<ProductImagesProps> = ({ images = [], title }) => 
           {secondaryImages.map(img => (
             <img
               key={img.id}
-              src={`http://localhost:5000/images/${img.image_url}`}
+              src={`https://res.cloudinary.com/dsezrayrn/image/upload/v1747945584/${img.image_url}`}
               alt={`${title} image`}
               className="w-20 h-20 rounded border border-gray-300 object-cover cursor-pointer hover:border-green-600"
             />

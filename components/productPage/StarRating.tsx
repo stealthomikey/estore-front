@@ -12,14 +12,11 @@ const StarRating: React.FC<StarRatingProps> = ({ rating, ratingCount }) => {
   return (
     <div className="flex items-center mb-3">
       {[...Array(5)].map((_, i) => {
-        let starClass = 'text-gray-300 stroke-black';
         let clipPercentage = 0;
 
         if (i < fullStars) {
-          starClass = 'text-yellow-400 fill-yellow-400 stroke-black';
           clipPercentage = 100;
         } else if (i === fullStars && fractionalPart > 0) {
-          starClass = 'text-yellow-400 stroke-black';
           clipPercentage = fractionalPart * 100;
         }
 

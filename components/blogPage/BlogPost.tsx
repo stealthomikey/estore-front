@@ -8,7 +8,7 @@ interface BlogPostProps {
   excerpt: string;
 }
 
-const BlogPost: React.FC<BlogPostProps> = ({ title, imageUrl, excerpt }) => {
+const BlogPost: React.FC<BlogPostProps> = ({ title, excerpt }) => {
   return (
     <article className="flex gap-6 mb-8 max-w-4xl mx-auto bg-white rounded-md shadow-md overflow-hidden">
         <Image

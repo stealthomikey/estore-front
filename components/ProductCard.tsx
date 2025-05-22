@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React from 'react';
 import { ShoppingCart, Star } from 'lucide-react';
@@ -38,8 +38,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const fractionalPart = rating - fullStars;
 
   const imageUrl = primaryImage
-    ? `http://localhost:5000/images/${primaryImage.image_url}`
-    : 'http://localhost:5000/images/placeholder.png';
+    ? `https://res.cloudinary.com/dsezrayrn/image/upload/v1747945584/${primaryImage.image_url}`
+    : 'https://res.cloudinary.com/dsezrayrn/image/upload/v1747945584/Image_gmbu3r.png';
 
   return (
     <div className="bg-white rounded-xl shadow-md flex flex-col justify-between items-center transition-shadow duration-300 hover:shadow-2xl h-[500px] w-full max-w-sm p-4">
@@ -62,14 +62,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </div>
         <div className="flex items-center mb-3">
           {[...Array(5)].map((_, i) => {
-            let starClass = 'text-gray-300 stroke-black';
             let clipPercentage = 0;
 
             if (i < fullStars) {
-              starClass = 'text-yellow-400 fill-yellow-400 stroke-black';
               clipPercentage = 100;
             } else if (i === fullStars && fractionalPart > 0) {
-              starClass = 'text-yellow-400 stroke-black';
               clipPercentage = fractionalPart * 100;
             }
 

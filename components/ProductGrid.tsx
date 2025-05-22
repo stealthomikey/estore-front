@@ -16,23 +16,6 @@ interface Image {
   created_at: string;
 }
 
-// Define Product interface locally
-interface Product {
-  id: string;
-  title: string;
-  description: string;
-  price: string;
-  discount: string;
-  rating: string;
-  stock: number;
-  category_id: string;
-  category_name?: string;
-  brand_id: string;
-  additional_info: { [key: string]: string };
-  created_at: string;
-  images: Image[];
-}
-
 interface ProductGridProps {
   sortOption?: string; // Optional prop
   selectedFilters?: string[]; // Optional prop
