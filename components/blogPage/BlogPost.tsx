@@ -10,13 +10,16 @@ interface BlogPostProps {
 
 const BlogPost: React.FC<BlogPostProps> = ({ title, excerpt }) => {
   return (
-    <article className="flex gap-6 mb-8 max-w-4xl mx-auto bg-white rounded-md shadow-md overflow-hidden">
+    <article className="flex flex-col md:flex-row gap-4 mb-8 max-w-4xl mx-auto bg-white rounded-md shadow-md overflow-hidden">
+      <div className="w-full md:w-40 h-60 md:h-auto relative flex-shrink-0">
         <Image
           src={blog}
-          alt="Under Construction"        
-          className="w-40 object-cover"
+          alt="Under Construction"
+          fill
+          className="object-cover"
           loading="lazy"
         />
+      </div>
 
       <div className="p-4 flex flex-col justify-center">
         <h2 className="text-xl font-semibold mb-2">{title}</h2>
