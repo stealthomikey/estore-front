@@ -7,15 +7,6 @@ import ShopMoreButton from './ShopMoreButton';
 import useProductData from '../hooks/useProductData';
 import useProductSortAndFilter from '../hooks/useProductSortAndFilter';
 
-// Define Image interface locally
-interface Image {
-  id: string;
-  product_id: string;
-  image_url: string;
-  is_primary: boolean;
-  created_at: string;
-}
-
 interface ProductGridProps {
   sortOption?: string; // Optional prop
   selectedFilters?: string[]; // Optional prop
