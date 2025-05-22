@@ -36,7 +36,7 @@ const ProductImages: React.FC<ProductImagesProps> = ({ images = [], title }) => 
   };
 
   const primaryImageUrl = primaryImage
-    ? `https://res.cloudinary.com/dsezrayrn/image/upload/v1747945584/${primaryImage.image_url}`
+    ? `https://res.cloudinary.com/dsezrayrn/image/upload/${primaryImage.image_url}`
     : 'https://res.cloudinary.com/dsezrayrn/image/upload/v1747945584/Image_gmbu3r.png';
 
   return (
@@ -56,7 +56,7 @@ const ProductImages: React.FC<ProductImagesProps> = ({ images = [], title }) => 
           {secondaryImages.map(img => (
             <img
               key={img.id}
-              src={`https://res.cloudinary.com/dsezrayrn/image/upload/v1747945584/${img.image_url}`}
+              src={`https://res.cloudinary.com/dsezrayrn/image/upload/${img.image_url}`}
               alt={`${title} image`}
               className="w-20 h-20 rounded border border-gray-300 object-cover cursor-pointer hover:border-green-600"
               onClick={() => handleImageSwap(img)}

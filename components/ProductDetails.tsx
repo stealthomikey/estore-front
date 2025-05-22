@@ -38,7 +38,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const fractionalPart = rating - fullStars;
 
   const imageUrl = primaryImage
-    ? `https://res.cloudinary.com/dsezrayrn/image/upload/v1747945584/${primaryImage.image_url}`
+    ? `https://res.cloudinary.com/dsezrayrn/image/upload/${primaryImage.image_url}`
     : 'https://res.cloudinary.com/dsezrayrn/image/upload/v1747945584/Image_gmbu3r.png';
 
   return (
