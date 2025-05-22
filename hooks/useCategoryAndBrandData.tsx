@@ -23,12 +23,12 @@ const useCategoryAndBrandData = () => {
     const fetchData = async () => {
       try {
         // Fetch categories
-        const categoryResponse = await fetch('http://localhost:5000/api/categories');
+        const categoryResponse = await fetch('https://michaelxkenxoestore-api.onrender.com/api/categories');
         if (!categoryResponse.ok) throw new Error('Failed to fetch categories');
         const categoryData: Category[] = await categoryResponse.json();
 
         // Fetch brands
-        const brandResponse = await fetch('http://localhost:5000/api/brands');
+        const brandResponse = await fetch('https://michaelxkenxoestore-api.onrender.com/api/brands');
         if (!brandResponse.ok) throw new Error('Failed to fetch brands');
         const brandData: Brand[] = await brandResponse.json();
 

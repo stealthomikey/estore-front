@@ -41,7 +41,7 @@ const useProductById = (id: string): ProductFetchResult => {
   useEffect(() => {
     const fetchBrandName = async (brandId: string): Promise<string | null> => {
       try {
-        const res = await fetch(`http://localhost:5000/api/brands/${brandId}`);
+        const res = await fetch(`https://michaelxkenxoestore-api.onrender.com/api/brands/${brandId}`);
         if (!res.ok) throw new Error('Failed to fetch brand');
         const data = await res.json();
         return data.name; // Adjust if your API returns differently
@@ -55,7 +55,7 @@ const useProductById = (id: string): ProductFetchResult => {
       setError(null);
 
       try {
-        const productRes = await fetch(`http://localhost:5000/api/products/${id}`);
+        const productRes = await fetch(`https://michaelxkenxoestore-api.onrender.com/api/products/${id}`);
         if (!productRes.ok) throw new Error('Failed to fetch product');
         const productData: Product = await productRes.json();
 
